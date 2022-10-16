@@ -1,3 +1,4 @@
+from datetime import date
 from django.views.generic.list import ListView
 
 from .forms import ExpenseSearchForm
@@ -15,9 +16,15 @@ class ExpenseListView(ListView):
         form = ExpenseSearchForm(self.request.GET)
         if form.is_valid():
             name = form.cleaned_data.get('name', '').strip()
+            start_date = form.cleaned_data.get('date', '')
+            end_date = form.cleaned_data.get('date', '')
             if name:
-                queryset = queryset.filter(name__icontains=name)
-
+                queryset = queryset.filter(name__icontains=name)    
+            if start_date and end_date:
+                queryset = queryset.filter(last_updated__range=[
+							form['start_date'].value(),
+							form['end_date'].value()])
+                            #Not sure why these are not working...
         return super().get_context_data(
             form=form,
             object_list=queryset,

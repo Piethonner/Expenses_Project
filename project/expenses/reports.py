@@ -1,5 +1,4 @@
 from collections import OrderedDict
-
 from django.db.models import Sum, Value
 from django.db.models.functions import Coalesce
 
