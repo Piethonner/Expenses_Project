@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="{% url 'expenses:category-create' %}">add</a>
+<a href="{% url 'expenses:category-create' %}">Add</a>
 
 <table border="1">
 	<thead>
 		<tr>
-			<th>name</th>
-			<th>actions</th>
+			<th>Name</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,7 +17,7 @@
 				{{obj.name}}
 			</td>
 			<td>
-				<a href="{% url 'expenses:category-delete' obj.id %}">delete</a>
+				<a href="{% url 'expenses:category-delete' obj.id %}">Delete</a>
 			</td>
 		</tr>
 		{% endfor %}

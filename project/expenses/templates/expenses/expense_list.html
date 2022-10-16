@@ -2,23 +2,23 @@
 
 {% block content %}
 
-<a href="{% url 'expenses:expense-create' %}">add</a>
+<a href="{% url 'expenses:expense-create' %}">Add</a>
 
 <form method="get" action="">
   {{form.as_p}}
-  <button type="submit">search</button>
+  <button type="submit">Search</button>
 </form>
 <br>
 <table border="1">
 	<caption>Expenses</caption>
 	<thead>
 	  <tr>
-		<th>no.</th>
-		<th>category</th>
-		<th>name</th>
-		<th>amount</th>
-		<th>date</th>
-		<th>actions</th>
+		<th>No.</th>
+		<th>Category</th>
+		<th>Name</th>
+		<th>Amount</th>
+		<th>Date</th>
+		<th>Actions</th>
 	  </tr>
 	</thead>
 	<tbody>
@@ -29,15 +29,15 @@
 		<td>{{ obj.category|default:"-" }}</td>
 		<td>{{ obj.name|default:"-" }}</td>
 		<td>{{ obj.amount|floatformat:2 }}</td>
-		<td>{{obj.date}}</td>
+		<td>{{ obj.date }}</td>
 		<td>
-		  <a href="{% url 'expenses:expense-edit' obj.id %}">edit</a>
-		  <a href="{% url 'expenses:expense-delete' obj.id %}">delete</a>
+		  <a href="{% url 'expenses:expense-edit' obj.id %}">Edit</a>
+		  <a href="{% url 'expenses:expense-delete' obj.id %}">Delete</a>
 		</td>
 	  </tr>
 	  {% empty %}
 	  <tr>
-		<td colspan="5">no items</td>
+		<td colspan="5">No items</td>
 	  </tr>
 	{% endfor %}
 	</tbody>
